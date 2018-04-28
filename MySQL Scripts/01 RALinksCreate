@@ -6,22 +6,22 @@ CREATE DATABASE IF NOT EXISTS RALinks;
 DROP TABLE IF EXISTS RALinks.Person;
 CREATE TABLE IF NOT EXISTS RALinks.Person
 (
-    PersonID                INT             NOT NULL    UNIQUE AUTO_INCREMENT
-    , PersonDisplayName     VARCHAR(100)    NOT NULL
-    , ConnectionIndex       INT             NULL        DEFAULT 0
-    , DateOfBirth           DATE            NULL
-    , DateOfDeath           DATE            NULL
-    , PersonNotes			VARCHAR(8000)	NULL
-	, CreateDt				TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    PersonID             INT             NOT NULL   UNIQUE AUTO_INCREMENT
+    , PersonDisplayName  VARCHAR(100)    NOT NULL
+    , ConnectionIndex    INT             NULL       DEFAULT 0
+    , DateOfBirth        DATE            NULL
+    , DateOfDeath        DATE            NULL
+    , PersonNotes        VARCHAR(8000)   NULL
+    , CreateDt           TIMESTAMP       NOT NULL   DEFAULT CURRENT_TIMESTAMP
 );
  
 DROP TABLE IF EXISTS RALinks.Artist;
 CREATE TABLE IF NOT EXISTS RALinks.Artist
 (
-    ArtistID            INT             NOT NULL    UNIQUE AUTO_INCREMENT
-    , ArtistDisplayName VARCHAR(100)    NOT NULL
-    , ArtistNotes		VARCHAR(8000)	NULL
-	, CreateDt			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    ArtistID             INT             NOT NULL    UNIQUE AUTO_INCREMENT
+    , ArtistDisplayName  VARCHAR(100)    NOT NULL
+    , ArtistNotes        VARCHAR(8000)   NULL
+    , CreateDt	         TIMESTAMP       NOT NULL   DEFAULT CURRENT_TIMESTAMP
 );
  
 DROP TABLE IF EXISTS RALinks.Album;
@@ -31,22 +31,22 @@ CREATE TABLE IF NOT EXISTS RALinks.Album
     , AlbumDisplayName  VARCHAR(100)    NOT NULL
     , CopyrightYear     INT             NULL
     , ArtistID          INT             NULL
-	, NumberOfTracks	INT				NULL
+    , NumberOfTracks    INT             NULL
     , VariousArtistsInd BOOLEAN         NOT NULL    DEFAULT 0
     , CompilationInd    BOOLEAN         NOT NULL    DEFAULT 0
     , SoundtrackInd     BOOLEAN         NOT NULL    DEFAULT 0
-	, AlbumNotes		VARCHAR(8000)	NULL
-	, CreateDt			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    , AlbumNotes        VARCHAR(8000)	NULL
+    , CreateDt          TIMESTAMP       NOT NULL    DEFAULT CURRENT_TIMESTAMP
 );
  
 DROP TABLE IF EXISTS RALinks.Song;
 CREATE TABLE IF NOT EXISTS RALinks.Song
 (
-	SongID				INT             NOT NULL    UNIQUE  auto_increment
-	, SongTitle			varchar(100)	NOT NULL
+    SongID              INT             NOT NULL    UNIQUE  auto_increment
+    , SongTitle	        varchar(100)    NOT NULL
     , CopyrightYear     INT             NULL
-	, SongNotes			VARCHAR(8000)	NULL
-	, CreateDt			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    , SongNotes	        VARCHAR(8000)	NULL
+    , CreateDt	        TIMESTAMP       NOT NULL    DEFAULT CURRENT_TIMESTAMP
 );
 
 DROP TABLE IF EXISTS RALinks.Track;
@@ -54,23 +54,23 @@ CREATE TABLE IF NOT EXISTS RALinks.Track
 (
     TrackID             INT             NOT NULL    UNIQUE  AUTO_INCREMENT
     , AlbumID           INT             NOT NULL
-    , SongID			INT				NOT NULL
-	, TrackNbr			INT				NULL
-    , LiveInd           BOOLEAN			NOT NULL	default 0
-	, CoverInd			BOOLEAN			NOT NULL
+    , SongID            INT             NOT NULL
+    , TrackNbr          INT             NULL
+    , LiveInd           BOOLEAN         NOT NULL    DEFAULT 0
+    , CoverInd          BOOLEAN         NOT NULL
     , SecondsDuration   INT             NULL
-	, TrackNotes		VARCHAR(8000)	NULL
-	, CreateDt			TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    , TrackNotes        VARCHAR(8000)	NULL
+    , CreateDt          TIMESTAMP       NOT NULL    DEFAULT CURRENT_TIMESTAMP
 );
  
 DROP TABLE IF EXISTS RALinks.Playlist;
 CREATE TABLE IF NOT EXISTS RALinks.Playlist
 (
-	PlaylistNbr							INT			NOT NULL
-	, PlaylistVersion					INT			NOT NULL
-	, PlaylistName						VARCHAR(50)	NOT NULL
-	, PlaylistMostCurrentVerionInd		BOOLEAN		NOT NULL	DEFAULT 1
-	, CreateDt							TIMESTAMP		NOT NULL	DEFAULT CURRENT_TIMESTAMP
+	PlaylistNbr                     INT             NOT NULL
+	, PlaylistVersion               INT             NOT NULL
+	, PlaylistName                  VARCHAR(50)	NOT NULL
+	, PlaylistMostCurrentVerionInd	BOOLEAN		NOT NULL       DEFAULT 1
+	, CreateDt                      TIMESTAMP       NOT NULL       DEFAULT CURRENT_TIMESTAMP
 
 	, CONSTRAINT Playlist_pk	PRIMARY KEY (PlaylistNbr, PlaylistVersion)
 );
@@ -78,14 +78,14 @@ CREATE TABLE IF NOT EXISTS RALinks.Playlist
 DROP TABLE IF EXISTS RALinks.PlaylistTrack;
 CREATE TABLE IF NOT EXISTS RALinks.PlaylistTrack
 (
-	PlaylistNbr					INT			NOT NULL
-	, PlaylistVersion			INT			NOT NULL
-	, PlaylistTrackNbr			INT			NOT NULL
-	, TrackID					INT			NOT NULL
-	, PlaylistTrackSortOrder	INT			NOT NULL
-	, CreateDt					TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+    PlaylistNbr                      INT                NOT NULL
+    , PlaylistVersion                INT                NOT NULL
+    , PlaylistTrackNbr               INT                NOT NULL
+    , TrackID                        INT                NOT NULL
+    , PlaylistTrackSortOrder         INT                NOT NULL
+    , CreateDt                       TIMESTAMP          NOT NULL    DEFAULT CURRENT_TIMESTAMP
 
-	, CONSTRAINT PlaylistTrack_pk	PRIMARY KEY (PlaylistNbr, PlaylistVersion, PlaylistTrackNbr)
+    , CONSTRAINT PlaylistTrack_pk    PRIMARY KEY (PlaylistNbr, PlaylistVersion, PlaylistTrackNbr)
 );
  
 
